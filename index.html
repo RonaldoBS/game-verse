@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAMEVERSE • Sua loja gamer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo"><span class="icon">🎮</span>GAMEVERSE</a>
+    <div class="search">
+      <span>🔍</span>
+      <input type="text" id="search" placeholder="Buscar por produto, marca, categoria...">
+    </div>
+    <button class="cart-btn" id="openCart" aria-label="Abrir carrinho">🛒<span class="badge hidden" id="cartBadge">0</span></button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <h1>Level up seu <span>setup gamer</span></h1>
+    <p>Periféricos, hardware e acessórios de alta performance com preço de outro nível. Entrega rápida e garantia estendida em todos os produtos.</p>
+    <button class="cta" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">Ver ofertas ⚡</button>
+  </section>
+
+  <h2 class="section-title" id="catalogo">Catálogo</h2>
+  <div class="cats" id="cats"></div>
+
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" style="display:none">
+    <span class="big">🕹️</span>
+    <p>Nenhum produto encontrado. Tente outra busca ou categoria.</p>
+  </div>
+
+  <section class="newsletter">
+    <h2>Receba promoções exclusivas 🎁</h2>
+    <p>Cadastre-se e ganhe 10% de desconto na primeira compra.</p>
+    <form class="news-form" id="newsForm">
+      <input type="email" placeholder="Seu melhor e-mail" required>
+      <button type="submit">Quero!</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 GAMEVERSE — Todos os direitos reservados.</span>
+    <div class="links">
+      <a href="#">Ajuda</a>
+      <a href="#">Trocas</a>
+      <a href="#">Privacidade</a>
+      <a href="#">Contato</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Cart drawer -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h3>🛒 Seu carrinho</h3>
+    <button id="closeCart">&times;</button>
+  </div>
+  <div class="drawer-body" id="cartItems"></div>
+  <div class="drawer-foot">
+    <div class="total-row"><span>Total</span><span class="val" id="total">R$ 0,00</span></div>
+    <button class="checkout" id="checkout">Finalizar compra</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
