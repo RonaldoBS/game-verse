@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GAMEVERSE - Sua loja gamer definitiva com periféricos, hardware e acessórios de alta performance.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
 <title>GAMEVERSE • Sua loja gamer</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -13,7 +15,7 @@
     <a href="#" class="logo"><span class="icon">🎮</span>GAMEVERSE</a>
     <div class="search">
       <span>🔍</span>
-      <input type="text" id="search" placeholder="Buscar por produto, marca, categoria...">
+      <input type="text" id="search" placeholder="Buscar por produto, marca, categoria..." aria-label="Buscar produtos">
     </div>
     <button class="cart-btn" id="openCart" aria-label="Abrir carrinho">🛒<span class="badge hidden" id="cartBadge">0</span></button>
   </div>
@@ -27,20 +29,47 @@
     <button class="cta" onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">Ver ofertas ⚡</button>
   </section>
 
-  <h2 class="section-title" id="catalogo">Catálogo</h2>
-  <div class="cats" id="cats"></div>
+  <section class="catalog-section">
+    <div class="catalog-header">
+      <div>
+        <h2 class="section-title" id="catalogo">Catálogo de Produtos</h2>
+        <span class="catalog-count" id="catalogCount">12 produtos</span>
+      </div>
 
-  <div class="grid" id="grid"></div>
-  <div class="empty" id="empty" style="display:none">
-    <span class="big">🕹️</span>
-    <p>Nenhum produto encontrado. Tente outra busca ou categoria.</p>
-  </div>
+      <div class="catalog-controls">
+        <div class="control-group">
+          <label for="sortSelect">Ordenar por:</label>
+          <select id="sortSelect" class="custom-select" aria-label="Ordenar produtos por preço ou avaliação">
+            <option value="featured">✨ Destaques</option>
+            <option value="price-asc">💰 Menor Preço</option>
+            <option value="price-desc">💎 Maior Preço</option>
+            <option value="rating">⭐ Melhor Avaliação</option>
+          </select>
+        </div>
+
+        <div class="control-group price-filter-group">
+          <label for="priceRange">Preço até: <strong id="priceVal">R$ 4.000</strong></label>
+          <input type="range" id="priceRange" min="80" max="4000" step="50" value="4000" aria-label="Filtrar por preço máximo">
+        </div>
+      </div>
+    </div>
+
+    <div class="cats" id="cats" role="tablist" aria-label="Categorias de produtos"></div>
+
+    <div class="grid" id="grid"></div>
+
+    <div class="empty" id="empty" style="display:none">
+      <span class="big">🕹️</span>
+      <p>Nenhum produto encontrado com os filtros selecionados.</p>
+      <button class="reset-filter-btn" id="resetFilters">Limpar filtros</button>
+    </div>
+  </section>
 
   <section class="newsletter">
     <h2>Receba promoções exclusivas 🎁</h2>
     <p>Cadastre-se e ganhe 10% de desconto na primeira compra.</p>
     <form class="news-form" id="newsForm">
-      <input type="email" placeholder="Seu melhor e-mail" required>
+      <input type="email" placeholder="Seu melhor e-mail" required aria-label="Seu e-mail para newsletter">
       <button type="submit">Quero!</button>
     </form>
   </section>
@@ -60,10 +89,10 @@
 
 <!-- Cart drawer -->
 <div class="overlay" id="overlay"></div>
-<aside class="drawer" id="drawer">
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
   <div class="drawer-head">
-    <h3>🛒 Seu carrinho</h3>
-    <button id="closeCart">&times;</button>
+    <h3 id="cartTitle">🛒 Seu carrinho</h3>
+    <button id="closeCart" aria-label="Fechar carrinho">&times;</button>
   </div>
   <div class="drawer-body" id="cartItems"></div>
   <div class="drawer-foot">
@@ -72,7 +101,7 @@
   </div>
 </aside>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="script.js"></script>
 </body>
