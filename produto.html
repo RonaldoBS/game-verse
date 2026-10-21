@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Detalhes do produto - GAMEVERSE Sua loja gamer definitiva.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+<title>Produto • GAMEVERSE</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="pdp-body">
+
+<header>
+  <div class="wrap nav">
+    <div class="nav-brand">
+      <button class="menu-btn" id="openMenu" aria-label="Abrir menu de cadastro e conta" title="Menu e Cadastro do Cliente">
+        <span class="menu-bars">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+      <a href="index.html" class="logo" title="GAMEVERSE - Início">
+        <svg class="logo-ctrl-svg" viewBox="0 0 100 78" fill="none" aria-hidden="true">
+          <path d="M28 15 C38 11, 62 11, 72 15 C85 20, 95 34, 91 56 C88 72, 75 76, 65 68 L57 60 C53 58, 47 58, 43 60 L35 68 C25 76, 12 72, 9 56 C5 34, 15 20, 28 15 Z" fill="#7c4dff"/>
+          <circle cx="36" cy="46" r="5" fill="#1b1b36"/>
+          <circle cx="64" cy="46" r="5" fill="#1b1b36"/>
+        </svg>
+        <span class="logo-text">GAMEVERSE</span>
+      </a>
+    </div>
+    <div class="search">
+      <span>🔍</span>
+      <input type="text" id="pdpSearch" placeholder="Buscar produtos no catálogo..." aria-label="Buscar produtos">
+    </div>
+    <button class="cart-btn" id="openCart" aria-label="Abrir carrinho">🛒<span class="badge hidden" id="cartBadge">0</span></button>
+  </div>
+</header>
+
+<main class="wrap pdp-wrap">
+
+  <!-- Breadcrumbs & Back link -->
+  <nav class="pdp-breadcrumbs" aria-label="Navegação estrutural">
+    <a href="index.html" class="back-link">← Voltar ao Catálogo</a>
+    <span class="sep">/</span>
+    <span id="bcCategory" class="bc-item">Categoria</span>
+    <span class="sep">/</span>
+    <span id="bcName" class="bc-item active">Produto</span>
+  </nav>
+
+  <!-- Product Detail Hero -->
+  <section class="pdp-hero" id="pdpHero">
+    <!-- Populated dynamically by produto.js -->
+  </section>
+
+  <!-- Detailed Sections (Tabs) -->
+  <section class="pdp-details-section">
+    <div class="pdp-tabs" role="tablist">
+      <button class="pdp-tab active" data-tab="desc" role="tab" aria-selected="true">📝 Descrição</button>
+      <button class="pdp-tab" data-tab="specs" role="tab" aria-selected="false">⚙️ Especificações Técnicas</button>
+      <button class="pdp-tab" data-tab="payment" role="tab" aria-selected="false">💳 Formas de Pagamento</button>
+      <button class="pdp-tab" data-tab="reviews" role="tab" aria-selected="false">⭐ Avaliações dos Clientes</button>
+    </div>
+
+    <!-- Tab 1: Description -->
+    <div class="pdp-tab-panel active" id="tab-desc" role="tabpanel">
+      <div class="pdp-panel-content" id="descContent"></div>
+    </div>
+
+    <!-- Tab 2: Specs -->
+    <div class="pdp-tab-panel" id="tab-specs" role="tabpanel">
+      <div class="pdp-panel-content" id="specsContent"></div>
+    </div>
+
+    <!-- Tab 3: Payment Methods -->
+    <div class="pdp-tab-panel" id="tab-payment" role="tabpanel">
+      <div class="pdp-panel-content" id="paymentContent"></div>
+    </div>
+
+    <!-- Tab 4: Customer Reviews -->
+    <div class="pdp-tab-panel" id="tab-reviews" role="tabpanel">
+      <div class="pdp-panel-content" id="reviewsContent"></div>
+    </div>
+  </section>
+
+  <!-- Recommended Products Carousel/Grid -->
+  <section class="pdp-related">
+    <h3 class="section-title">Produtos Relacionados</h3>
+    <div class="grid" id="relatedGrid"></div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 GAMEVERSE — Todos os direitos reservados.</span>
+    <div class="links">
+      <a href="index.html">Catálogo Completo</a>
+      <button class="btn-replay-cinematic" onclick="window.GameverseCinematic && window.GameverseCinematic.play()" title="Rever abertura cinematográfica">🎬 Abertura Gamer</button>
+      <a href="#">Ajuda</a>
+      <a href="#">Trocas</a>
+      <a href="#">Privacidade</a>
+      <a href="#">Contato</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Overlay global para gavetas -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Menu Lateral: Cadastro & Conta do Cliente -->
+<aside class="menu-drawer" id="menuDrawer" role="dialog" aria-modal="true" aria-labelledby="menuDrawerTitle">
+  <div class="menu-drawer-head">
+    <div class="menu-drawer-title-box">
+      <span class="head-icon">🎮</span>
+      <div>
+        <h3 id="menuDrawerTitle">Gameverse</h3>
+        <span class="sub-label">Cadastro &amp; Conta Gamer</span>
+      </div>
+    </div>
+    <button id="closeMenu" class="close-btn" aria-label="Fechar menu">&times;</button>
+  </div>
+  <div class="menu-drawer-body" id="menuDrawerBody">
+    <!-- Renderizado dinamicamente por menu.js -->
+  </div>
+</aside>
+
+<!-- Cart drawer -->
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+  <div class="drawer-head">
+    <h3 id="cartTitle">🛒 Seu carrinho</h3>
+    <button id="closeCart" aria-label="Fechar carrinho">&times;</button>
+  </div>
+  <div class="drawer-body" id="cartItems"></div>
+  <div class="drawer-foot">
+    <div class="total-row"><span>Total</span><span class="val" id="total">R$ 0,00</span></div>
+    <button class="checkout" id="checkout">Finalizar compra</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Scripts -->
+<script src="products.js"></script>
+<script src="produto.js"></script>
+<script src="menu.js"></script>
+<script src="cinematic.js"></script>
+</body>
+</html>
+

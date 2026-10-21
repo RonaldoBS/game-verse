@@ -12,7 +12,23 @@
 
 <header>
   <div class="wrap nav">
-    <a href="#" class="logo"><span class="icon">🎮</span>GAMEVERSE</a>
+    <div class="nav-brand">
+      <button class="menu-btn" id="openMenu" aria-label="Abrir menu de cadastro e conta" title="Menu e Cadastro do Cliente">
+        <span class="menu-bars">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+      <a href="index.html" class="logo" title="GAMEVERSE - Início">
+        <svg class="logo-ctrl-svg" viewBox="0 0 100 78" fill="none" aria-hidden="true">
+          <path d="M28 15 C38 11, 62 11, 72 15 C85 20, 95 34, 91 56 C88 72, 75 76, 65 68 L57 60 C53 58, 47 58, 43 60 L35 68 C25 76, 12 72, 9 56 C5 34, 15 20, 28 15 Z" fill="#7c4dff"/>
+          <circle cx="36" cy="46" r="5" fill="#1b1b36"/>
+          <circle cx="64" cy="46" r="5" fill="#1b1b36"/>
+        </svg>
+        <span class="logo-text">GAMEVERSE</span>
+      </a>
+    </div>
     <div class="search">
       <span>🔍</span>
       <input type="text" id="search" placeholder="Buscar por produto, marca, categoria..." aria-label="Buscar produtos">
@@ -79,6 +95,7 @@
   <div class="wrap foot">
     <span>© 2026 GAMEVERSE — Todos os direitos reservados.</span>
     <div class="links">
+      <button class="btn-replay-cinematic" onclick="window.GameverseCinematic && window.GameverseCinematic.play()" title="Rever abertura cinematográfica">🎬 Abertura Gamer</button>
       <a href="#">Ajuda</a>
       <a href="#">Trocas</a>
       <a href="#">Privacidade</a>
@@ -87,8 +104,27 @@
   </div>
 </footer>
 
-<!-- Cart drawer -->
+<!-- Overlay global para gavetas -->
 <div class="overlay" id="overlay"></div>
+
+<!-- Menu Lateral: Cadastro & Conta do Cliente -->
+<aside class="menu-drawer" id="menuDrawer" role="dialog" aria-modal="true" aria-labelledby="menuDrawerTitle">
+  <div class="menu-drawer-head">
+    <div class="menu-drawer-title-box">
+      <span class="head-icon">🎮</span>
+      <div>
+        <h3 id="menuDrawerTitle">Gameverse</h3>
+        <span class="sub-label">Cadastro &amp; Conta Gamer</span>
+      </div>
+    </div>
+    <button id="closeMenu" class="close-btn" aria-label="Fechar menu">&times;</button>
+  </div>
+  <div class="menu-drawer-body" id="menuDrawerBody">
+    <!-- Renderizado dinamicamente por menu.js -->
+  </div>
+</aside>
+
+<!-- Cart drawer -->
 <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
   <div class="drawer-head">
     <h3 id="cartTitle">🛒 Seu carrinho</h3>
@@ -103,6 +139,9 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<script src="products.js"></script>
 <script src="script.js"></script>
+<script src="menu.js"></script>
+<script src="cinematic.js"></script>
 </body>
 </html>

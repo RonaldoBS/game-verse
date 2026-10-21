@@ -1,139 +1,6 @@
-const PRODUCTS = [
-  {
-    id: 1,
-    name: "Headset Gamer HyperX Cloud II",
-    cat: "Áudio",
-    price: 499.90,
-    old: 699.90,
-    img: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=600&q=80",
-    tag: "sale",
-    rating: 4.8,
-    rev: 1240
-  },
-  {
-    id: 2,
-    name: "Mouse Razer DeathAdder V3",
-    cat: "Periféricos",
-    price: 379.90,
-    old: null,
-    img: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=600&q=80",
-    tag: "hot",
-    rating: 4.9,
-    rev: 890
-  },
-  {
-    id: 3,
-    name: "Teclado Mecânico Redragon K552",
-    cat: "Periféricos",
-    price: 249.90,
-    old: 329.90,
-    img: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80",
-    tag: "sale",
-    rating: 4.7,
-    rev: 1560
-  },
-  {
-    id: 4,
-    name: "Monitor LG UltraGear 27\" 165Hz",
-    cat: "Monitores",
-    price: 1499.90,
-    old: 1799.90,
-    img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80",
-    tag: "hot",
-    rating: 4.9,
-    rev: 320
-  },
-  {
-    id: 5,
-    name: "Placa de Vídeo RTX 4070",
-    cat: "Hardware",
-    price: 3899.90,
-    old: null,
-    img: "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=600&q=80",
-    tag: "hot",
-    rating: 4.9,
-    rev: 210
-  },
-  {
-    id: 6,
-    name: "Cadeira Gamer ThunderX3",
-    cat: "Móveis",
-    price: 1199.90,
-    old: 1499.90,
-    img: "https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=600&q=80",
-    tag: "new",
-    rating: 4.6,
-    rev: 540
-  },
-  {
-    id: 7,
-    name: "Mousepad XL Speed Surface",
-    cat: "Periféricos",
-    price: 89.90,
-    old: null,
-    img: "https://images.unsplash.com/photo-1616440347437-b1c73416efc2?auto=format&fit=crop&w=600&q=80",
-    tag: null,
-    rating: 4.5,
-    rev: 980
-  },
-  {
-    id: 8,
-    name: "Controle DualSense PS5",
-    cat: "Consoles",
-    price: 449.90,
-    old: 529.90,
-    img: "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=600&q=80",
-    tag: "sale",
-    rating: 4.9,
-    rev: 1720
-  },
-  {
-    id: 9,
-    name: "Webcam Logitech C920",
-    cat: "Streaming",
-    price: 379.90,
-    old: null,
-    img: "https://images.unsplash.com/photo-1588702547919-26089e690ecc?auto=format&fit=crop&w=600&q=80",
-    tag: "new",
-    rating: 4.7,
-    rev: 650
-  },
-  {
-    id: 10,
-    name: "Microfone HyperX QuadCast",
-    cat: "Streaming",
-    price: 649.90,
-    old: 799.90,
-    img: "https://images.unsplash.com/photo-1590658006821-04f4008d5717?auto=format&fit=crop&w=600&q=80",
-    tag: "hot",
-    rating: 4.8,
-    rev: 430
-  },
-  {
-    id: 11,
-    name: "SSD NVMe 1TB Samsung 980",
-    cat: "Hardware",
-    price: 549.90,
-    old: 699.90,
-    img: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=600&q=80",
-    tag: "sale",
-    rating: 4.9,
-    rev: 760
-  },
-  {
-    id: 12,
-    name: "Caixa de Som Gamer Redragon",
-    cat: "Áudio",
-    price: 199.90,
-    old: null,
-    img: "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=600&q=80",
-    tag: "new",
-    rating: 4.4,
-    rev: 310
-  }
-];
+// Gameverse - Catálogo Principal
 
-// App State
+// App State (PRODUCTS is loaded from products.js)
 const cats = ["Todos", ...new Set(PRODUCTS.map(p => p.cat))];
 let activeCat = "Todos";
 let query = "";
@@ -212,9 +79,9 @@ function render() {
     }[p.tag] : '';
 
     return `
-    <article class="card">
+    <article class="card" data-id="${p.id}" tabindex="0" role="link" style="cursor:pointer" title="Clique para ver detalhes de ${escapeHtml(p.name)}">
       <div class="thumb">
-        <img src="${p.img}" alt="${escapeHtml(p.name)}" class="product-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80'">
+        <img src="${p.img}" alt="${escapeHtml(p.name)}" class="product-img" loading="lazy" onerror="this.src='assets/headset-gamer.jpg'">
         ${tag}
       </div>
       <div class="body">
@@ -386,11 +253,28 @@ if (resetBtn) {
   resetBtn.addEventListener('click', resetAllFilters);
 }
 
-// Grid delegation for adding to cart
+// Grid delegation: click card navigates to PDP, click add button adds to cart
 $('#grid').addEventListener('click', e => {
   const btn = e.target.closest('.add');
-  if (!btn) return;
-  addToCart(Number(btn.dataset.id), e);
+  if (btn) {
+    e.stopPropagation();
+    addToCart(Number(btn.dataset.id), e);
+    return;
+  }
+  const card = e.target.closest('.card');
+  if (card && card.dataset.id) {
+    window.location.href = `produto.html?id=${card.dataset.id}`;
+  }
+});
+
+// Keyboard navigation (Enter key on card)
+$('#grid').addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    const card = e.target.closest('.card');
+    if (card && card.dataset.id && !e.target.classList.contains('add')) {
+      window.location.href = `produto.html?id=${card.dataset.id}`;
+    }
+  }
 });
 
 // Cart item controls (inc, dec, remove)
@@ -432,6 +316,13 @@ $('#newsForm').addEventListener('submit', e => {
   showToast('Obrigado! Você ganhou 10% de desconto. 🎁');
   e.target.reset();
 });
+
+// Check query param from URL (e.g. index.html?search=...)
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('search')) {
+  query = urlParams.get('search');
+  $('#search').value = query;
+}
 
 // Initialize on load
 renderCats();
